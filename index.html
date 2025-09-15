@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Armario de Outfits</title>
+  <link rel="stylesheet" href="src/css/main.css">
+  <meta name="description" content="Elige tu outfit combinando tops, pantalones y zapatos.">
+  <meta name="author" content="Gaby">
+</head>
+<body>
+  <div class="outfit-container">
+    <div class="outfit-section">
+      <button class="nav-button prev" data-section="tops">‹</button>
+      <div class="carousel" id="tops-carousel">
+        <div class="carousel-items"></div>
+      </div>
+      <button class="nav-button next" data-section="tops">›</button>
+    </div>
+
+    <div class="outfit-section">
+      <button class="nav-button prev" data-section="pants">‹</button>
+      <div class="carousel" id="pants-carousel">
+        <div class="carousel-items"></div>
+      </div>
+      <button class="nav-button next" data-section="pants">›</button>
+    </div>
+
+    <div class="outfit-section">
+      <button class="nav-button prev" data-section="shoes">‹</button>
+      <div class="carousel" id="shoes-carousel">
+        <div class="carousel-items"></div>
+      </div>
+      <button class="nav-button next" data-section="shoes">›</button>
+    </div>
+  </div>
+
+  <script src="src/js/data.js"></script>
+  <script src="src/js/main.js"></script>
+</body>
+</html>
+    </div>
+    <div class="fila">
+      <button class="boton izq" onclick="mover(-1, 1)">‹</button>
+      <div class="carrusel pantalones" id="carrusel2"><div class="imagenes" id="imagenesPantalones"></div></div>
+      <button class="boton der" onclick="mover(1, 1)">›</button>
+    </div>
+    <div class="fila">
+      <button class="boton izq" onclick="mover(-1, 2)">‹</button>
+      <div class="carrusel zapatos" id="carrusel3"><div class="imagenes" id="imagenesZapatos"></div></div>
+      <button class="boton der" onclick="mover(1, 2)">›</button>
+    </div>
+    <div class="botones">
+      <button class="final-btn btn-look" onclick="guardarLook()">Ver Look Final</button>
+    </div>
+  </div>
+</body>
+</html>
+

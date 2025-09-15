@@ -1,0 +1,87 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Container styles */
+.outfit-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Section styles */
+.outfit-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Carousel styles */
+.carousel {
+  flex: 1;
+  overflow: hidden;
+  margin: 0 10px;
+}
+
+.carousel-items {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.carousel-item {
+  min-width: 100%;
+  padding: 10px;
+  text-align: center;
+}
+
+.carousel-item img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Navigation buttons */
+.nav-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  padding: 10px;
+  transition: opacity 0.3s ease;
+}
+
+.nav-button:hover {
+  opacity: 0.7;
+}
+
+.nav-button:focus {
+  outline: none;
+}
+
+.prev {
+  margin-right: 10px;
+}
+
+.next {
+  margin-left: 10px;
+}
