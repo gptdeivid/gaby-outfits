@@ -1,78 +1,100 @@
-# PPA - Personal Personal Assistant 👗
+# Gaby Outfits 👗
 
-## Descripción del Proyecto
+A modern fashion outfit selection web application that allows users to browse and create clothing combinations.
 
-El **PPA (Personal Personal Assistant)** es una aplicación web innovadora diseñada para ser tu asistente personal de moda. La aplicación te ayuda a crear combinaciones de outfits de manera intuitiva y visual, permitiéndote explorar diferentes estilos y guardar tus looks favoritos.
+## Features
 
-## Características Principales
+### 🎨 Interactive Virtual Wardrobe
+- **Clothing Carousel**: Browse through different options:
+  - **Tops**: Various t-shirts, blouses, and tops
+  - **Pants**: Jeans, trousers, skirts, and bottoms
+  - **Shoes**: Sneakers, boots, loafers, and sandals
 
-### 🎨 Armario Virtual Interactivo
-- **Carrusel de Prendas**: Navega fácilmente entre diferentes opciones de:
-  - **Playeras**: 29 opciones diferentes de tops y camisetas
-  - **Pantalones**: 22 variedades de pantalones, jeans y bottoms
-  - **Zapatos**: 5 tipos de calzado para completar tu look
+### 🔄 Intuitive Navigation
+- Left/right navigation buttons for each category
+- Real-time visualization of outfit combinations
+- Responsive interface that adapts to different screen sizes
 
-### 🔄 Navegación Intuitiva
-- Botones de navegación izquierda/derecha para cada categoría
-- Visualización en tiempo real de las combinaciones
-- Interfaz responsive que se adapta a diferentes tamaños de pantalla
+### 💾 Save Functionality
+- **View Final Look**: Save your favorite combination
+- Local storage of your selections
+- Easy access to your saved outfits
 
-### 💾 Funcionalidad de Guardado
-- **Ver Look Final**: Guarda tu combinación favorita
-- Almacenamiento local de tus selecciones
-- Fácil acceso a tus outfits guardados
+## Technologies Used
 
-## Tecnologías Utilizadas
+- **HTML5**: Semantic application structure
+- **CSS3**: Modern design with gradients, smooth animations, responsive design
+- **JavaScript ES6**: Modular architecture with imports/exports
+- **Local Storage API**: Outfit persistence
 
-- **HTML5**: Estructura semántica de la aplicación
-- **CSS3**: Diseño moderno con:
-  - Gradientes y efectos visuales
-  - Animaciones suaves (transitions)
-  - Design responsive
-  - Fuente Inter de Google Fonts
-- **JavaScript Vanilla**: Lógica de navegación y persistencia de datos
-
-## Cómo Funciona
-
-1. **Selección**: Usa los botones de navegación (❮ ❯) para explorar las opciones en cada categoría
-2. **Visualización**: Ve en tiempo real cómo se ve tu outfit completo
-3. **Guardado**: Presiona "Ver Look Final" para guardar tu combinación preferida
-4. **Persistencia**: Tus selecciones se guardan automáticamente en el navegador
-
-## Estructura del Proyecto
+## Project Structure
 
 ```
-Gaby/
-├── david.html          # Aplicación principal del armario virtual
-├── imagenes/           # Carpeta con todas las prendas
-│   ├── Playera1.png    # Tops y camisetas (1-29)
-│   ├── Pantalon1.png   # Pantalones y jeans (1-22)
-│   └── Zapatos1.png    # Calzado (1-5)
-├── fondo.png          # Imagen de fondo
-├── lookfinal.html     # Página para mostrar el look guardado
-└── README.md          # Este archivo
+gaby-outfits/
+├── public/              # HTML files
+│   ├── david.html       # Main outfit selector page
+│   └── lookfinal.html   # Final look display page
+├── src/
+│   ├── css/            # Stylesheets
+│   │   ├── main.css    # Main page styles
+│   │   └── lookfinal.css # Final look page styles
+│   ├── js/             # JavaScript modules
+│   │   ├── data.js     # Clothing catalog data
+│   │   ├── carousel.js # Carousel functionality
+│   │   ├── lookfinal.js # Final look page logic
+│   │   └── main.js     # Main application entry point
+│   └── components/     # Reusable components (future)
+├── assets/
+│   └── images/         # Clothing images
+│       ├── tops-*.png  # Top clothing items
+│       ├── pants-*.png # Pants and bottoms
+│       └── shoes-*.png # Footwear
+├── dist/               # Built files (generated)
+├── docs/               # Documentation
+├── package.json        # Project configuration
+├── .gitignore          # Git ignore rules
+└── README.md           # This file
 ```
 
-## Instalación y Uso
+## Development
 
-1. Clona o descarga el proyecto
-2. Asegúrate de tener todas las imágenes en la carpeta `imagenes/`
-3. Abre `david.html` en tu navegador web
-4. ¡Comienza a crear tus outfits perfectos!
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-## Próximas Funcionalidades
+2. Start development server:
+   ```bash
+   npm run dev
+   ```
 
-- [ ] Sistema de etiquetas y categorización avanzada
-- [ ] Recomendaciones basadas en el clima
-- [ ] Compartir looks en redes sociales
-- [ ] Historial de outfits utilizados
-- [ ] Modo oscuro/claro
-- [ ] Integración con calendario para planificar outfits
+3. Build for production:
+   ```bash
+   npm run build
+   ```
 
-## Contribuciones
+## Usage
 
-Este proyecto está en desarrollo activo. Las sugerencias y mejoras son bienvenidas.
+1. Open the application at `http://localhost:3000`
+2. Use the carousel arrows to browse different clothing items
+3. Select your desired combination of top, pants, and shoes
+4. Click "Ver Look Final" to view your complete outfit
+5. Clear selections or go back to try new combinations
+
+## Future Features
+
+- [ ] Advanced tagging and categorization system
+- [ ] Weather-based recommendations
+- [ ] Social media sharing
+- [ ] Outfit history tracking
+- [ ] Dark/light mode toggle
+- [ ] Calendar integration for outfit planning
+- [ ] User accounts and cloud sync
+
+## License
+
+MIT License
 
 ---
 
-*Desarrollado con ❤️ para hacer que elegir tu outfit diario sea más fácil y divertido.*
+*Built with ❤️ to make choosing your daily outfit easier and more fun.*

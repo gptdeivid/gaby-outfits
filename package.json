@@ -1,0 +1,22 @@
+{
+  "name": "gaby-outfits",
+  "version": "1.0.0",
+  "description": "Fashion outfit selection web application",
+  "main": "public/david.html",
+  "scripts": {
+    "dev": "live-server public --port=3000",
+    "build": "echo 'Building project...' && npm run copy-assets",
+    "copy-assets": "cp -r src/* dist/ && cp -r assets/* dist/",
+    "preview": "live-server dist --port=3001"
+  },
+  "keywords": ["fashion", "outfits", "web-app", "style"],
+  "author": "Gaby",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  }
+}
