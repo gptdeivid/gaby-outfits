@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Armario de Outfits</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+      color: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+    }
+    .outfit-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      transform: scale(0.85);
+    }
+    .fila {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .carrusel {
+      width: 200px;
+      height: 220px;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      background: transparent;
+      position: relative;
+    }
+    .carrusel.pantalones { height: 350px; }
+    .carrusel.zapatos { width: 120px; height: 140px; }
+    .imagenes {
+      display: flex;
+      transition: transform 0.6s ease;
+    }
+    .carrusel img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      flex-shrink: 0;
+      background: #fff;
+    }
+    .boton {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(6px);
+      border: none;
+      color: #222;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+    }
+    .boton:hover { background: rgba(255, 255, 255, 0.9); transform: translateY(-50%) scale(1.1); }
+    .boton.izq { left: -50px; }
+    .boton.der { right: -50px; }
+
+    .botones {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .final-btn {
+      padding: 12px 30px;
+      border-radius: 10px;
+      border: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .btn-look { background: #111; color: white; }
+    .btn-look:hover { background: #444; }
+
+    @media (max-height: 700px) {
+      .outfit-container { transform: scale(0.75); }
+    }
+  </style>
+  <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+  <meta http-equiv="Referrer-Policy" content="no-referrer">
+  <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin-allow-popups">
+  <meta http-equiv="Cross-Origin-Resource-Policy" content="cross-origin">
+  <meta http-equiv="Cross-Origin-Embedder-Policy" content="unsafe-none">
+  <meta name="color-scheme" content="light only">
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="dns-prefetch" href="https://images.unsplash.com">
+</head>
+<body>
+  <div class="outfit-container">
+    <div class="fila">
+      <button class="boton izq" onclick="mover(-1, 0)">‹</button>
+      <div class="carrusel" id="carrusel1"><div class="imagenes" id="imagenesPlayeras"></div></div>
+      <button class="boton der" onclick="mover(1, 0)">›</button>
+    </div>
+    <div class="fila">
+      <button class="boton izq" onclick="mover(-1, 1)">‹</button>
+      <div class="carrusel pantalones" id="carrusel2"><div class="imagenes" id="imagenesPantalones"></div></div>
+      <button class="boton der" onclick="mover(1, 1)">›</button>
+    </div>
+    <div class="fila">
+      <button class="boton izq" onclick="mover(-1, 2)">‹</button>
+      <div class="carrusel zapatos" id="carrusel3"><div class="imagenes" id="imagenesZapatos"></div></div>
+      <button class="boton der" onclick="mover(1, 2)">›</button>
+    </div>
+    <div class="botones">
+      <button class="final-btn btn-look" onclick="guardarLook()">Ver Look Final</button>
+    </div>
+  </div>
+
+  <script>
+    const indices = [0, 0, 0];
+    const carruseles = [
+      document.querySelector("#carrusel1 .imagenes"),
+      document.querySelector("#carrusel2 .imagenes"),
+      document.querySelector("#carrusel3 .imagenes")
+    ];
+
+    // Catálogos de stock con imagen y URL origen
+    const tops = [
+      { name: 'Playera blanca básica', img: 'https://images.unsplash.com/photo-1520975916090-3105956dac38?w=800&auto=format&fit=crop', url: 'https://unsplash.com' },
+      { name: 'Camisa denim', img: 'https://images.unsplash.com/photo-1548883354-7622d03acae1?w=800&auto=format&fit=crop', url: 'https://unsplash.com' },
+      { name: 'Sudadera gris', img: 'https://images.unsplash.com/photo-1520975916090-3105956dac38?w=800&auto=format&fit=crop', url: 'https://unsplash.com' },
+      { name: 'Blusa negra', img: 'https://images.unsplash.com/photo-1520972783867-c0d8cdb58d5b?w=800&auto=format&fit=crop', url: 'https://unsplash.com' },
+      { name: 'Top rayas', img: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800&auto=format&fit=crop', url: 'https://unsplash.com' }
+    ];
+    const pants = [
+      { name: 'Jeans azul', img: 'https://images.unsplash.com/photo-1516826957135-700dedea698c?w=800&auto=format&fit=crop', url: 'https://unsplash.com' },
+      { name: 'Pantalón negro', img: 'https://images.unsplash.com/photo-1582582494700-2eb6b06bf8d8?w=800&auto=format&fit=crop', url: 'https://unsplash.com' },
+      { name: 'Jogger beige', img: 'https://images.unsplash.com/photo-1610384104078-9f2b805d6e7d?w=800&auto=format&fit=crop', url: 'https://unsplash.com' },
+      { name: 'Falda denim', img: 'https://images.unsplash.com/photo-1520974735194-3bf2c86f9b89?w=800&auto=format&fit=crop', url: 'https://unsplash.com' }
+    ];
+    const shoes = [
+      { name: 'Tenis blancos', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop', url: 'https://unsplash.com' },
+      { name: 'Botines café', img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&auto=format&fit=crop', url: 'https://unsplash.com' },
+      { name: 'Mocasines negros', img: 'https://images.unsplash.com/photo-1520975922071-1a8111d3d3d9?w=800&auto=format&fit=crop', url: 'https://unsplash.com' },
+      { name: 'Sandalias beige', img: 'https://images.unsplash.com/photo-1519744792095-2f2205e87b6f?w=800&auto=format&fit=crop', url: 'https://unsplash.com' }
+    ];
+
+    function mover(direccion, fila) {
+      const total = carruseles[fila].children.length;
+      indices[fila] += direccion;
+      if (indices[fila] < 0) indices[fila] = total - 1;
+      if (indices[fila] >= total) indices[fila] = 0;
+      actualizarCarrusel(fila);
+    }
+
+    function actualizarCarrusel(fila) {
+      const first = carruseles[fila].children[0];
+      if (!first) return;
+      const ancho = first.clientWidth;
+      carruseles[fila].style.transform = `translateX(-${indices[fila] * ancho}px)`;
+    }
+
+    function guardarLook() {
+      const selTop = tops[indices[0]];
+      const selPant = pants[indices[1]];
+      const selShoe = shoes[indices[2]];
+      const seleccion = [selTop, selPant, selShoe];
+      localStorage.setItem("lookFinal", JSON.stringify(seleccion));
+      window.location.href = "lookfinal.html";
+    }
+
+    function generarItems(contenedorId, items) {
+      const contenedor = document.getElementById(contenedorId);
+      items.forEach(it => {
+        const a = document.createElement('a');
+        a.href = it.url;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        const img = document.createElement('img');
+        img.src = it.img;
+        img.alt = it.name;
+        a.appendChild(img);
+        contenedor.appendChild(a);
+      });
+    }
+
+    // Cargar imágenes de stock
+    generarItems('imagenesPlayeras', tops);
+    generarItems('imagenesPantalones', pants);
+    generarItems('imagenesZapatos', shoes);
+
+    window.addEventListener('load', () => {
+      actualizarCarrusel(0);
+      actualizarCarrusel(1);
+      actualizarCarrusel(2);
+    });
+  </script>
+</body>
+</html>
